@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Meri Pyari Sister 💖</title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+    animation: bgChange 10s infinite;
+}
+
+/* 🌈 Background */
+@keyframes bgChange {
+    0% { background: #ff9a9e; }
+    25% { background: #fad0c4; }
+    50% { background: #a18cd1; }
+    75% { background: #fbc2eb; }
+    100% { background: #ff9a9e; }
+}
+
+/* 🎁 Gift */
+.gift {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+.box-gift {
+    width: 120px;
+    height: 120px;
+    background: #ff4d6d;
+    border-radius: 10px;
+}
+.lid {
+    width: 130px;
+    height: 30px;
+    background: #e63950;
+    position: absolute;
+    top: -30px;
+    left: -5px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.gift.open .lid {
+    transform: translateY(-80px) rotate(-20deg);
+}
+
+/* Content */
+.main {
+    display: none;
+    padding: 30px;
+}
+.content {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    display: inline-block;
+    max-width: 400px;
+}
+
+/* 🔥 PREMIUM BUTTON */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: rgba(255,255,255,0.2);
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,77,109,0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255,77,109,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,77,109,0); }
+}
+
+/* ❤️ Hearts */
+.heart {
+    position: absolute;
+    color: red;
+    animation: floatUp 5s linear infinite;
+}
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* 🎆 Fireworks */
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(20); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="clickSound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3">
+</audio>
+
+<audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
+</audio>
+
+<div class="gift" onclick="openGift(this)">
+    <div class="box-gift"></div>
+    <div class="lid"></div>
+</div>
+
+<div class="main" id="main">
+    <div class="content">
+        <h2 id="text"></h2>
+        <button onclick="next()">Paglu bhai</button>
+    </div>
+</div>
+
+<script>
+let step = 0;
+
+function playSound(){
+    document.getElementById("clickSound").play();
+}
+
+function typeText(element, text, speed = 30){
+    element.innerHTML = "";
+    let i = 0;
+    function typing(){
+        if(i < text.length){
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+function openGift(el){
+    playSound();
+    document.getElementById("bgMusic").play();
+    el.classList.add("open");
+
+    setTimeout(()=>{
+        el.style.display="none";
+        document.getElementById("main").style.display="block";
+        typeText(document.getElementById("text"), "Hello prachi di meri pyari bahena 💖");
+    },800);
+}
+
+function next(){
+    playSound();
+    step++;
+
+    let textEl = document.getElementById("text");
+    let btn = document.querySelector("button");
+
+    if(step===1){
+        typeText(textEl, `Brother and Sister 💖
+
+Side by side or miles apart Brother and Sister
+will always be connected by the heart
+
+They Share Each and Every thing, They Fight
+for Small things, but Still Care
+for Each Other`);
+        btn.innerHTML="Apke liye kuch hai";
+    }
+
+    else if(step===2){
+        typeText(textEl, `Jingle ie Bell 🎵
+Jingle Bell n.
+Jingle all the way,
+
+Hey Uparwale
+Mere "Prachi di" ko
+Thodi "Akal" toh de 😂
+
+Love you bahena ❤️`);
+        btn.innerHTML="aagge badho di";
+    }
+
+    else if(step===3){
+        typeText(textEl, `Bhul gaye? Ya bhulana chahte ho?
+Dooor kar diya? Ya jana chahte ho?
+Aazma liya? Ya aazmana chahte ho?
+
+Msg toh kr diya kro....
+Hath tut gye hai. ya tudvana chahte ho? 😅`);
+        btn.innerHTML="aagge badho";
+    }
+
+    else if(step===4){
+        typeText(textEl, `Tumhare liye ek shayari arz hai.!
+
+Gulab jaise ho, Gulab lagte ho,
+Halka sa muskura Do to lajawab lagte ho 😍🥰`);
+        btn.innerHTML="aagge badho";
+    }
+
+    else if(step===5){
+        typeText(textEl, `Zinda hoon toh baat kar liya karo....
+
+Marne ke baad agar maine baat karni shuru ki
+toh Taweez banvate phiroge 😅`);
+        btn.innerHTML="aagge badho";
+    }
+
+    else if(step===6){
+        typeText(textEl, `Tu Jo Ruthi To Mukka Padega
+Tu Jo Badli To Laat Padegi
+Tu chup Hai to Ajeeb Lagta Hai
+Tere Bina Mera kon Rahega
+
+Tu Hi Gadhi Tu Hi Dhakkan
+Mere Bina Bekaar hai tu
+
+MERI PYARI BAHENA Hai tu ❤️`);
+        btn.innerHTML="Wah wah";
+    }
+
+    else if(step===7){
+        typeText(textEl, `Aapke paas dimag Ha.i....
+Chalta nahi wo alag baat Hai 😂
+
+Aap Smart ho....
+koi maanta nahi wo alag baat Hai..
+
+Kaafi izzat Hai aapki....
+koi karta nahi wo alag baat Hai..
+
+Aapki bezzati ho rahi Hai fir bhi...
+Aap padh Rahe ho "kya baat Hai" 😆`);
+        btn.innerHTML="please click";
+    }
+
+    else if(step===8){
+        typeText(textEl, `To kaisi hai meri Bhandariya 😂
+
+apne buggu bhai ko bhuli to nahi na ❤️
+
+bhul jaogi to haddi tut jayegi 😎
+
+💥 THE END 💥`);
+        btn.style.display="none";
+        startFireworks();
+    }
+}
+
+function createHeart(){
+    const h=document.createElement("div");
+    h.classList.add("heart");
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+}
+setInterval(createHeart,300);
+
+function startFireworks(){
+    setInterval(()=>{
+        const f=document.createElement("div");
+        f.classList.add("firework");
+        f.style.left=Math.random()*100+"vw";
+        f.style.top=Math.random()*100+"vh";
+        f.style.background=`hsl(${Math.random()*360},100%,50%)`;
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    },200);
+}
+</script>
+
+</body>
+</html>
